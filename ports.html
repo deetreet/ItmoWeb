@@ -8,6 +8,7 @@
     <title>Информация о морских судах и флотах</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/index.js" defer></script>
+    <script src="js/auth.js" defer></script>
 </head>
 <body>
 
@@ -37,6 +38,15 @@
             <img src="photo/profile_icon.png" alt="Иконка профиля">
         </button>
 
+        <div id="profileMenu" class="profile-menu hidden">
+            <div id="userInfo" class="user-info"></div>
+            <form id="authForm" class="auth-form hidden">
+                <input type="text" id="username" placeholder="Логин" required>
+                <input type="password" id="password" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+            <button id="logoutButton" class="nav-button-f hidden">Выйти</button>
+        </div>
     </div>
 </header>
 
