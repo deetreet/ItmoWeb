@@ -2,53 +2,53 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Судно, суда, морские суда, флот, информация, поиск">
     <meta name="description" content="Судно, суда, морские суда, флот, информация, поиск">
     <title>Информация о морских судах и флотах</title>
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
 <header>
-    <h1>ShipData</h1>
-</header>
-<main>
-    <nav id="navigation_bar">
-        <p>База данных судов</p>
-        <p>Флоты</p>
-        <p>Новости</p>
-    </nav>
-    <div class="picture_block">
-        <picture>
-            <img src="home_picture.jpg" alt="Ship_photo" width="188" height="232">
-        </picture>
+    <div class="container header-content">
+        <div class="logo">
+            <img src="photo/logo.png" alt="Логотип сайта" class="logo-img">
+            <span class="site-title">ShipData</span>
+        </div>
+
+        <button id="profileButton" class="profile-button">
+            <img src="photo/profile_icon.png" alt="Иконка профиля">
+        </button>
+
     </div>
-    <section class="section_block">
-        <h3>О сайте</h3>
-        <article>
-            Этот сайт содержит информацию о действующих морских <strong>судах</strong>, <em>портах</em> и <i>новостях
-            судоходства</i>
-        </article>
+</header>
+
+<main>
+    <section class="description">
+        <div>
+            <h2>Добро пожаловать на ShipData</h2>
+            <p>Здесь вы можете найти информацию о морских судах, портах и последние новости из мира мореплавания.</p>
+        </div>
     </section>
-    <aside class="aside_block">
-        <q class="quote">
-            Стоит увидеть море лишь однажды, и потом будешь скучать по нему всю жизнь.
-        </q>
-    </aside>
-    <aside class="aside_block">
-        <h2>Формула успеха</h2>
-        <span class="formula">
-            <u>Успешный успех<sup>2</sup></u> <br> Успешный успех
-        </span>
-    </aside>
+
+    <section class="menu">
+        <div class="container">
+            <nav class="navigation">
+                <a href="home.html" class="button">Главная</a>
+                <a href="ships.html" class="button">Суда</a>
+                <a href="ports.html" class="button">Порты</a>
+            </nav>
+        </div>
+    </section>
 </main>
+
 <footer>
-    <div id="contacts">
-        <h3>Контакты</h3>
-        <ul>
-            <li>https://t.me/deetreet</li>
-            <li>test@gmail.com</li>
-        </ul>
+    <div class="container">
+        <p>© 2024 ShipData. Все права защищены.</p>
     </div>
 </footer>
+
 </body>
+
 </html>

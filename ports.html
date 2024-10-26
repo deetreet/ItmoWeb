@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Судно, суда, морские суда, флот, информация, поиск">
+    <meta name="description" content="Судно, суда, морские суда, флот, информация, поиск">
+    <title>Информация о морских судах и флотах</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <img src="photo/logo.png" alt="Логотип сайта" class="logo-img">
+            <span class="site-title">ShipData</span>
+        </div>
+
+        <div class="dropdown-menu">
+            <a href="home.html" class="button">Главная</a>
+            <a href="ships.html" class="button">Суда</a>
+            <a href="ports.html" class="button">Порты</a>
+        </div>
+
+        <nav class="header-navigation">
+            <a href="home.html" class="button">Главная</a>
+            <a href="ships.html" class="button">Суда</a>
+            <a href="ports.html" class="button">Порты</a>
+        </nav>
+
+        <button id="profileButton" class="profile-button">
+            <img src="photo/profile_icon.png" alt="Иконка профиля">
+        </button>
+
+    </div>
+</header>
+
+<main>
+    <section class="main-section">
+        <h2>Информация о портах</h2>
+
+        <div class="container">
+                <form class="filter-form">
+                    <div class="filter-entity">
+                        <label for="port-name">Название порта:</label>
+                        <input type="text" id="port-name" name="port-name" placeholder="Введите название порта">
+                    </div>
+
+                    <div class="filter-entity">
+                        <label for="country">Страна:</label>
+                        <input type="text" id="country" name="country" placeholder="Введите страну">
+                    </div>
+
+                    <button type="submit" class="filter-button">Применить фильтр</button>
+                </form>
+
+            <div class="grid-table">
+                <div class="grid-header">Название</div>
+                <div class="grid-header">Код локации</div>
+                <div class="grid-header">Количество судов в порту</div>
+                <div class="grid-header">Количество судов ожидающих прибытия в порт</div>
+
+                <div class="grid-row">Murmansk</div>
+                <div class="grid-row">RUMMK</div>
+                <div class="grid-row">14</div>
+                <div class="grid-row">12</div>
+
+                <div class="grid-row">Saint Petersburg</div>
+                <div class="grid-row">RULED</div>
+                <div class="grid-row">15</div>
+                <div class="grid-row">18</div>
+
+                <div class="grid-row">Vladivostok</div>
+                <div class="grid-row">RUVVO</div>
+                <div class="grid-row">17</div>
+                <div class="grid-row">8</div>
+
+                <div class="grid-row">Singapore</div>
+                <div class="grid-row">SGSIN</div>
+                <div class="grid-row">20</div>
+                <div class="grid-row">27</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2024 ShipData. Все права защищены.</p>
+    </div>
+</footer>
+
+</body>
+</html>
