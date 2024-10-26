@@ -1,31 +1,37 @@
 {
   "comments": [
     {
+      "id": 1,
       "ship": "KOLA",
       "author": "deetreet",
       "text": "Норм"
     },
     {
+      "id": 2,
       "ship": "VIKTOR BAKAEV",
       "author": "deetreet",
       "text": "Норм"
     },
     {
+      "id": 3,
       "ship": "PIONEERING SPIRIT",
       "author": "username1",
       "text": "Норм"
     },
     {
+      "id": 4,
       "ship": "KOLA",
       "author": "deetreet",
       "text": "Норм"
     },
     {
+      "id": 5,
       "ship": "VIKTOR BAKAEV",
       "author": "username2",
       "text": "Норм"
     },
     {
+      "id": 6,
       "ship": "PIONEERING SPIRIT",
       "author": "username1",
       "text": "Норм"
