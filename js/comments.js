@@ -1,5 +1,11 @@
 let comments = {};
 let userAuthorized = false;
+// Инициализирую мессенджер и определяю расположение уведомлений (справа снизу) и отбражение (поверх содержимого)
+Messenger.options = {
+    extraClasses: 'messenger-fixed messenger-on-right messenger-on-bottom',
+    theme: 'flat',
+    maxMessages: 5
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     let preloader = document.getElementById('preloader');
@@ -9,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let randomFilter = Math.random() < 0.5 ? { min: 100, max: 200 } : { min: 200, max: 300 };
 
-    fetch(`https://mpf92093237402d130c6.free.beeceptor.com/data/deetreet?id_min=${randomFilter.min}&id_max=${randomFilter.max}`)
+    fetch(`https://mp239b04cfcef36489d6.free.beeceptor.com/data/deetreet?id_min=${randomFilter.min}&id_max=${randomFilter.max}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -25,11 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 comments[shipName].push(comment.author + ": " + comment.text);
             });
-
-            let firstShip = Object.keys(comments)[0];
-            if (firstShip) {
-                displayComments(firstShip);
-            }
         })
         .catch(error => {
             preloader.style.display = 'none';
@@ -50,7 +51,12 @@ function addComment() {
     userAuthorized = localStorage.getItem('userAuthorized') === 'true';
 
     if (!userAuthorized) {
-        alert('Чтобы добавить комментарий нужно авторизироваться');
+        // Вывожу сообщение об ошибке с возможностью его закрыть
+        Messenger().post({
+            message: 'Чтобы добавить комментарий нужно авторизироваться',
+            type: 'error',
+            showCloseButton: true
+        });
         return;
     }
 
@@ -58,9 +64,25 @@ function addComment() {
     let comment = commentInput.value.trim();
     let selectedShip = document.querySelector('.grid-row.selected');
 
-    if (!comment || !selectedShip) {
-        alert('Вы не выбрали судно или не ввели комментарий');
+    if (!selectedShip) {
+        // Вывожу сообщение об ошибке с возможностью его закрыть
+        Messenger().post({
+            message: 'Вы не выбрали судно',
+            type: 'error',
+            showCloseButton: true,
+            hideAfter: 400
+        });
         return;
+    }
+
+    if (!comment) {
+        // Вывожу информационное сообщение
+        Messenger().post({
+            message: 'Вы не ввели комментарий',
+            type: 'info',
+            showCloseButton: true,
+        })
+        comment = "Нет слов"
     }
 
     let shipName = selectedShip.getAttribute('data-ship');
@@ -72,6 +94,14 @@ function addComment() {
     let username = localStorage.getItem('username');
     comments[shipName].push(username + ": " + comment);
     commentInput.value = '';
+
+    // Вывожу сообщение об успешном действии с возможностью его закрыть
+    Messenger().post({
+        message: 'Комментарий добавлен',
+        type: 'success',
+        showCloseButton: true
+    });
+
     displayComments(shipName);
 }
 

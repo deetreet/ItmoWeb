@@ -7,6 +7,14 @@
     <meta name="description" content="Судно, суда, морские суда, флот, информация, поиск">
     <title>Информация о морских судах и флотах</title>
     <link rel="stylesheet" href="css/styles.css">
+
+
+    <!--Подключаю библиотеку по CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger-theme-flat.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/js/messenger.js" defer></script>
+
     <script src="js/index.js" defer></script>
     <script src="js/auth.js" defer></script>
     <script src="js/comments.js" defer></script>
@@ -54,19 +62,19 @@
         <h2>Информация о судах</h2>
 
         <div class="container">
-                <form class="filter-form">
-                    <div class="filter-entity">
-                        <label for="port-name">Название судна:</label>
-                        <input type="text" id="port-name" name="port-name" placeholder="Введите название порта">
-                    </div>
+            <form class="filter-form">
+                <div class="filter-entity">
+                    <label for="port-name">Название судна:</label>
+                    <input type="text" id="port-name" name="port-name" placeholder="Введите название порта">
+                </div>
 
-                    <div class="filter-entity">
-                        <label for="IMO">IMO:</label>
-                        <input type="text" id="IMO" name="IMO" placeholder="Введите IMO">
-                    </div>
+                <div class="filter-entity">
+                    <label for="IMO">IMO:</label>
+                    <input type="text" id="IMO" name="IMO" placeholder="Введите IMO">
+                </div>
 
-                    <button type="submit" class="filter-button">Применить фильтр</button>
-                </form>
+                <button type="submit" class="filter-button">Применить фильтр</button>
+            </form>
 
             <div class="grid-table">
                 <div class="grid-header">Название</div>
@@ -99,7 +107,7 @@
                 <h3>Комментарии</h3>
 
                 <div id="preloader" class="hidden gif">
-                    <img src="photo/loading-gif-2.gif" alt="Loading..." />
+                    <img src="photo/loading-gif-2.gif" alt="Loading..."/>
                 </div>
 
                 <div id="error-message" class="hidden error">⚠ Что-то пошло не так</div>
