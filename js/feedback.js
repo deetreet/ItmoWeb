@@ -112,14 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let table = document.createElement("table");
         table.classList.add("generated-table");
 
-        let headerRow = table.insertRow();
-        let selectedCheckboxes = Array.from(document.querySelectorAll('.criteria-checkbox:checked'));
-        selectedCheckboxes.forEach(c => {
-            let headerCell = document.createElement("th");
-            headerCell.textContent = c.value.charAt(0).toUpperCase() + c.value.slice(1);
-            headerRow.appendChild(headerCell);
-        });
-
         resultContainer.appendChild(table);
     });
 });
