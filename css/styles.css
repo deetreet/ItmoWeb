@@ -284,6 +284,59 @@ footer {
 }
 
 
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 75%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e3f66;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 20px;
+}
+
+.generate-button {
+    margin: 20px auto 0;
+}
+
+.rate-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.result-container {
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+.generated-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #0c365d;
+    color: #fff;
+}
+
+.generated-table th, .generated-table td {
+    border: 1px solid #3d6ca8;
+    padding: 15px;
+    text-align: center;
+}
+
+
 @media screen and (max-width: 800px) {
     .description h2 {
         font-size: 36px;
