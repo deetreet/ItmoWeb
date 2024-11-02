@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     preloader.style.display = 'flex';
 
-    let randomFilter = Math.random() < 0.5 ? { min: 100, max: 200 } : { min: 200, max: 300 };
+    let randomFilter = Math.random() < 0.5 ? { min: 1, max: 6 } : { min: 2, max: 5 };
 
-    fetch(`https://mpf92093237402d130c6.free.beeceptor.com/data/deetreet?id_min=${randomFilter.min}&id_max=${randomFilter.max}`)
+    fetch(`https://mp239b04cfcef36489d6.free.beeceptor.com/data/deetreet?`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(data => {
+            let minId = randomFilter.min
+            let maxId = randomFilter.max
+            data.comments = data.comments.filter(comment => comment.id >= minId && comment.id <= maxId);
+
             preloader.style.display = 'none';
             data.comments.forEach(comment => {
                 let shipName = comment.ship;
@@ -26,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 comments[shipName].push(comment.author + ": " + comment.text);
             });
 
-            let firstShip = Object.keys(comments)[0];
+            let firstShip = document.querySelector('.grid-row[data-ship]').textContent;
             if (firstShip) {
                 displayComments(firstShip);
             }
@@ -78,7 +82,6 @@ function addComment() {
 function displayComments(shipName) {
     let commentList = document.getElementById('comment-list');
     commentList.innerHTML = '';
-
     if (comments[shipName]) {
         comments[shipName].forEach(comment => {
             let commentDiv = document.createElement('div');
@@ -87,4 +90,26 @@ function displayComments(shipName) {
             commentList.appendChild(commentDiv);
         });
     }
+}
+
+function deleteUserComments() {
+    userAuthorized = localStorage.getItem('userAuthorized') === 'true';
+
+    if (!userAuthorized) {
+        alert('Чтобы удалить комментарии нужно авторизироваться');
+        return;
+    }
+
+    let username = localStorage.getItem('username');
+    let selectedShip = document.querySelector('.grid-row.selected');
+
+    if (!selectedShip) {
+        alert('Нужно выбрать корабль, с которого хотите удалить комментарии');
+        return;
+    }
+
+    let shipName = selectedShip.getAttribute('data-ship');
+    comments[shipName] = comments[shipName].filter(comment => !comment.startsWith(username + ":"));
+
+    displayComments(shipName);
 }

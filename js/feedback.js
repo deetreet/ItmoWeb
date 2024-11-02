@@ -27,12 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function saveParams() {
         let currentParams = JSON.parse(localStorage.getItem("feedbackParams")) || [];
-        
+
         let criteria = Array.from(document.querySelectorAll('.criteria-checkbox:checked'))
             .map(crit => crit.value);
         let rates = Array.from(document.querySelectorAll('.rate-input'))
             .map(input => input.value);
-        
+
         let newParams = {
             criteria,
             rates,
@@ -126,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
         table.classList.add("generated-table");
 
         resultContainer.appendChild(table);
+        alert("Отзывы очищены")
     });
 });
 
