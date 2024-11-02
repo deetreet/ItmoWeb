@@ -26,17 +26,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function saveParams() {
+        let currentParams = JSON.parse(localStorage.getItem("feedbackParams")) || [];
+        
         let criteria = Array.from(document.querySelectorAll('.criteria-checkbox:checked'))
             .map(crit => crit.value);
         let rates = Array.from(document.querySelectorAll('.rate-input'))
             .map(input => input.value);
-        let params = {
+        
+        let newParams = {
             criteria,
             rates,
         };
 
-        localStorage.setItem("feedbackParams", JSON.stringify(params));
+        currentParams.unshift(newParams);
+        localStorage.setItem("feedbackParams", JSON.stringify(currentParams));
     }
+
 
     document.getElementById("saveButton").addEventListener("click", saveParams);
 
@@ -58,6 +63,17 @@ document.addEventListener("DOMContentLoaded", function () {
         let selectedCheckboxes = Array.from(document.querySelectorAll('.criteria-checkbox:checked'));
         let newRates = Array.from(document.querySelectorAll('.rate-input')).map(input => input.value);
 
+        if (selectedCheckboxes.length === 0 || newRates.length === 0) {
+            return;
+        }
+
+        for (let i = 0; i < newRates.length; i++) {
+            if (newRates[i] === "") {
+                alert("Нельзя оставить пустой отзыв")
+                return;
+            }
+        }
+
         resultContainer.innerHTML = "";
 
         let table = document.createElement("table");
@@ -77,25 +93,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         let savedParams = JSON.parse(localStorage.getItem("feedbackParams"));
-        if (savedParams) {
-            let {criteria, rates} = savedParams;
+        if (savedParams && savedParams.length > 0) {
             let selectedCriteria = Array.from(document.querySelectorAll('.criteria-checkbox:checked'))
                 .map(checkbox => checkbox.value);
-            console.log(savedParams);
-            console.log(criteria, rates);
-            if (criteria && rates && selectedCriteria.length && rates.length) {
-                let row = table.insertRow();
-                selectedCriteria.forEach(criterion => {
-                    let cell = row.insertCell();
 
-                    let criterionIndex = criteria.indexOf(criterion);
-
-                    cell.textContent = criterionIndex !== -1 && criterionIndex < rates.length ? rates[criterionIndex] : "";
-                });
-
-            }
+            savedParams.forEach(param => {
+                let { criteria, rates } = param;
+                if (criteria && rates && selectedCriteria.length) {
+                    let row = table.insertRow();
+                    selectedCriteria.forEach(criterion => {
+                        let cell = row.insertCell();
+                        let criterionIndex = criteria.indexOf(criterion);
+                        cell.textContent = criterionIndex !== -1 && criterionIndex < rates.length ? rates[criterionIndex] : "";
+                    });
+                }
+            });
         }
-
         resultContainer.appendChild(table);
 
         saveParams()

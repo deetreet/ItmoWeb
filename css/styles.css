@@ -317,9 +317,7 @@ fieldset {
 }
 
 .result-container {
-    margin-top: 20px;
-    text-align: center;
-
+    margin: 20px 20px 0;
 }
 
 .generated-table {
