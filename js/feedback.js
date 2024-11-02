@@ -1,3 +1,9 @@
+Messenger.options = {
+    extraClasses: 'messenger-fixed messenger-on-right messenger-on-bottom',
+    theme: 'flat',
+    maxMessages: 5
+};
+
 document.addEventListener("DOMContentLoaded", function () {
     let ratesContainer = document.getElementById("ratesContainer");
     let resultContainer = document.getElementById("resultContainer");
@@ -66,7 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         } else {
-            alert("Нет сохранённых параметров");
+            Messenger().post({
+                message: 'Нет сохранённых параметров',
+                type: 'error',
+                showCloseButton: true
+            });
         }
     });
 
@@ -80,7 +90,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         for (let i = 0; i < newRates.length; i++) {
             if (newRates[i] === "") {
-                alert("Нельзя оставить пустой отзыв")
+                Messenger().post({
+                    message: 'Нельзя оставить пустой отзыв',
+                    type: 'error',
+                    showCloseButton: true
+                });
                 return;
             }
         }
@@ -137,7 +151,11 @@ document.addEventListener("DOMContentLoaded", function () {
         table.classList.add("generated-table");
 
         resultContainer.appendChild(table);
-        alert("Отзывы очищены")
+        Messenger().post({
+            message: 'Отзывы очищены',
+            type: 'error',
+            showCloseButton: true
+        });
     });
 });
 

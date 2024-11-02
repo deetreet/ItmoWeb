@@ -132,7 +132,12 @@ function deleteUserComments() {
     userAuthorized = localStorage.getItem('userAuthorized') === 'true';
 
     if (!userAuthorized) {
-        alert('Чтобы удалить комментарии нужно авторизироваться');
+        // Вывожу сообщение об ошибке с возможностью его закрыть
+        Messenger().post({
+            message: 'Чтобы удалить комментарии нужно авторизироваться',
+            type: 'error',
+            showCloseButton: true
+        });
         return;
     }
 
@@ -140,7 +145,12 @@ function deleteUserComments() {
     let selectedShip = document.querySelector('.grid-row.selected');
 
     if (!selectedShip) {
-        alert('Нужно выбрать корабль, с которого хотите удалить комментарии');
+        // Вывожу сообщение об ошибке с возможностью его закрыть
+        Messenger().post({
+            message: 'Нужно выбрать корабль, с которого хотите удалить комментарии',
+            type: 'error',
+            showCloseButton: true
+        });
         return;
     }
 
