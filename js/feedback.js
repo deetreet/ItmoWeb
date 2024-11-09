@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
             .map(crit => crit.value);
         let rates = Array.from(document.querySelectorAll('.rate-input'))
             .map(input => input.value);
-        
+        console.log(criteria)
+        console.log(rates);
         let newParams = {
             criteria,
             rates,
         };
 
-        currentParams.unshift(newParams);
-        localStorage.setItem("feedbackParams", JSON.stringify(currentParams));
+        localStorage.setItem("feedbackParams", JSON.stringify(newParams));
     }
 
 
@@ -47,6 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("loadButton").addEventListener("click", function () {
         let savedParams = JSON.parse(localStorage.getItem("feedbackParams"));
+
+        document.querySelectorAll('.criteria-checkbox').forEach(checkbox => {
+            checkbox.checked = false;
+        });
+
         if (savedParams) {
             savedParams.criteria.forEach(c => {
                 let checkbox = document.querySelector(`.criteria-checkbox[value="${c}"]`);
