@@ -27,12 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function saveParams() {
         let currentParams = JSON.parse(localStorage.getItem("feedbackParams")) || [];
-        
+
         let criteria = Array.from(document.querySelectorAll('.criteria-checkbox:checked'))
             .map(crit => crit.value);
         let rates = Array.from(document.querySelectorAll('.rate-input'))
             .map(input => input.value);
-        
+
         let newParams = {
             criteria,
             rates,
@@ -42,13 +42,25 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("feedbackParams", JSON.stringify(currentParams));
     }
 
+    function saveCriteria() {
+        let criteria = Array.from(document.querySelectorAll('.criteria-checkbox:checked'))
+            .map(crit => crit.value);
 
-    document.getElementById("saveButton").addEventListener("click", saveParams);
+        localStorage.setItem("feedbackCriteria", JSON.stringify(criteria));
+    }
+
+
+    document.getElementById("saveButton").addEventListener("click", saveCriteria);
 
     document.getElementById("loadButton").addEventListener("click", function () {
-        let savedParams = JSON.parse(localStorage.getItem("feedbackParams"));
+        let savedParams = JSON.parse(localStorage.getItem("feedbackCriteria"));
+
+        document.querySelectorAll('.criteria-checkbox').forEach(checkbox => {
+            checkbox.checked = false;
+        });
+
         if (savedParams) {
-            savedParams.criteria.forEach(c => {
+            savedParams.forEach(c => {
                 let checkbox = document.querySelector(`.criteria-checkbox[value="${c}"]`);
                 if (checkbox) {
                     checkbox.checked = true;
@@ -126,6 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
         table.classList.add("generated-table");
 
         resultContainer.appendChild(table);
+        alert("Отзывы очищены")
     });
 });
 
