@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function saveParams() {
         let currentParams = JSON.parse(localStorage.getItem("feedbackParams")) || [];
-
+        
         let criteria = Array.from(document.querySelectorAll('.criteria-checkbox:checked'))
             .map(crit => crit.value);
         let rates = Array.from(document.querySelectorAll('.rate-input'))
@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         localStorage.setItem("feedbackCriteria", JSON.stringify(criteria));
     }
-
 
     document.getElementById("saveButton").addEventListener("click", saveCriteria);
 
