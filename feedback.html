@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Судно, суда, морские суда, флот, информация, поиск">
+    <meta name="description" content="Судно, суда, морские суда, флот, информация, поиск">
+    <title>Информация о морских судах и флотах</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger-theme-flat.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/js/messenger.js" defer></script>
+
+    <script src="js/index.js" defer></script>
+    <script src="js/feedback.js" defer></script>
+    <script src="js/auth.js" defer></script>
+</head>
+<body>
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <img src="photo/logo.png" alt="Логотип сайта" class="logo-img">
+            <span class="site-title">ShipData</span>
+        </div>
+
+        <nav class="header-navigation">
+            <a href="home.html" class="button">Главная</a>
+            <a href="ships.html" class="button">Суда</a>
+            <a href="ports.html" class="button">Порты</a>
+            <a href="feedback.html" class="button">Отзывы</a>
+        </nav>
+
+        <button class="menu-toggle">☰ Меню</button>
+        <div class="dropdown-menu">
+            <a href="home.html" class="button">Главная</a>
+            <a href="ships.html" class="button">Суда</a>
+            <a href="ports.html" class="button">Порты</a>
+            <a href="feedback.html" class="button">Отзывы</a>
+        </div>
+
+        <button id="profileButton" class="profile-button">
+            <img src="photo/profile_icon.png" alt="Иконка профиля">
+        </button>
+
+        <div id="profileMenu" class="profile-menu hidden">
+            <div id="userInfo" class="user-info"></div>
+            <form id="authForm" class="auth-form hidden">
+                <input type="text" id="username" placeholder="Логин" required>
+                <input type="password" id="password" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+            <button id="logoutButton" class="nav-button-f hidden">Выйти</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="main-section">
+        <h2>Здесь можно оставить отзыв</h2>
+    </div>
+    <form id="criteriaForm">
+        <fieldset>
+            <legend>Выберите критерии:</legend>
+            <label><input type="checkbox" value="Дизайн" class="criteria-checkbox"> Дизайн </label>
+            <label><input type="checkbox" value="Функциональность" class="criteria-checkbox"> Функциональность </label>
+            <label><input type="checkbox" value="Удобство" class="criteria-checkbox"> Удобство </label>
+            <label><input type="checkbox" value="Поддержка" class="criteria-checkbox"> Поддержка </label>
+            <label><input type="checkbox" value="Скорость работы" class="criteria-checkbox"> Скорость работы </label>
+        </fieldset>
+
+        <div class="navigation">
+            <button type="button" id="addCriteriaButton" class="button">Добавить отзывы</button>
+            <button type="button" id="saveButton" class="button">Сохранить параметры</button>
+            <button type="button" id="loadButton" class="button">Загрузить параметры</button>
+        </div>
+    </form>
+
+    <div id="ratesContainer" class="rates-container">
+    </div>
+    <div class="navigation">
+        <button type="button" id="generateTableButton" class="button generate-button">Создать таблицу</button>
+        <button type="button" id="deleteTableButton" class="button generate-button">Удалить отзывы</button>
+    </div>
+    <div id="resultContainer" class="result-container">
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2024 ShipData. Все права защищены.</p>
+    </div>
+</footer>
+
+</body>
+</html>

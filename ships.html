@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Судно, суда, морские суда, флот, информация, поиск">
+    <meta name="description" content="Судно, суда, морские суда, флот, информация, поиск">
+    <title>Информация о морских судах и флотах</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+
+    <!--Подключаю библиотеку по CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/css/messenger-theme-flat.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/messenger/1.5.0/js/messenger.js" defer></script>
+
+    <script src="js/index.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/comments.js" defer></script>
+</head>
+<body>
+
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <img src="photo/logo.png" alt="Логотип сайта" class="logo-img">
+            <span class="site-title">ShipData</span>
+        </div>
+
+        <div class="dropdown-menu">
+            <a href="home.html" class="button">Главная</a>
+            <a href="ships.html" class="button">Суда</a>
+            <a href="ports.html" class="button">Порты</a>
+            <a href="feedback.html" class="button">Отзывы</a>
+        </div>
+
+        <button class="menu-toggle">☰ Меню</button>
+        <nav class="header-navigation">
+            <a href="home.html" class="button">Главная</a>
+            <a href="ships.html" class="button">Суда</a>
+            <a href="ports.html" class="button">Порты</a>
+            <a href="feedback.html" class="button">Отзывы</a>
+        </nav>
+
+        <button id="profileButton" class="profile-button">
+            <img src="photo/profile_icon.png" alt="Иконка профиля">
+        </button>
+
+        <div id="profileMenu" class="profile-menu hidden">
+            <div id="userInfo" class="user-info"></div>
+            <form id="authForm" class="auth-form hidden">
+                <input type="text" id="username" placeholder="Логин" required>
+                <input type="password" id="password" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+            <button id="logoutButton" class="nav-button-f hidden">Выйти</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="main-section">
+        <h2>Информация о судах</h2>
+
+        <div class="container">
+            <form class="filter-form">
+                <div class="filter-entity">
+                    <label for="port-name">Название судна:</label>
+                    <input type="text" id="port-name" name="port-name" placeholder="Введите название порта">
+                </div>
+
+                <div class="filter-entity">
+                    <label for="IMO">IMO:</label>
+                    <input type="text" id="IMO" name="IMO" placeholder="Введите IMO">
+                </div>
+
+                <button type="submit" class="filter-button">Применить фильтр</button>
+            </form>
+
+            <div class="grid-table">
+                <div class="grid-header">Название</div>
+                <div class="grid-header">IMO</div>
+                <div class="grid-header">Позывной</div>
+                <div class="grid-header">Длина</div>
+
+                <div class="grid-row on-cursor" data-ship="KOLA">KOLA</div>
+                <div class="grid-row">9217979</div>
+                <div class="grid-row">UBDQ5</div>
+                <div class="grid-row">335</div>
+
+                <div class="grid-row on-cursor" data-ship="VIKTOR BAKAEV">VIKTOR BAKAEV</div>
+                <div class="grid-row">9610810</div>
+                <div class="grid-row">UBSZ2</div>
+                <div class="grid-row">250</div>
+
+                <div class="grid-row on-cursor" data-ship="PIONEERING SPIRIT">PIONEERING SPIRIT</div>
+                <div class="grid-row">9593505</div>
+                <div class="grid-row">9HA4112</div>
+                <div class="grid-row">382</div>
+
+                <div class="grid-row on-cursor" data-ship="NEVSKIY PROSPECT">NEVSKIY PROSPECT</div>
+                <div class="grid-row">9256054</div>
+                <div class="grid-row">UAAA5</div>
+                <div class="grid-row">250</div>
+            </div>
+
+            <div class="comment-section" id="comments">
+                <h3>Комментарии</h3>
+
+                <div id="preloader" class="hidden gif">
+                    <img src="photo/loading-gif-2.gif" alt="Loading..."/>
+                </div>
+
+                <div id="error-message" class="hidden error">⚠ Что-то пошло не так</div>
+
+                <div id="comment-list"></div>
+                <textarea class="comment-input" id="comment-input" placeholder="Оставьте комментарий..."></textarea>
+                <button class="comment-button" onclick="addComment()">Добавить комментарий</button>
+                <button class="delete-comments-button" onclick="deleteUserComments()">Удалить все комментарии</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2024 ShipData. Все права защищены.</p>
+    </div>
+</footer>
+
+</body>
+</html>
